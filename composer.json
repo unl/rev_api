@@ -1,0 +1,27 @@
+{
+  "name": "unl/rev-api",
+  "description": "PHP library for the rev.com api",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "Michael Fairchild",
+      "email": "mfairchild@unl.edu"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "ext-json": "*",
+    "guzzle/guzzle": "~3.9.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.3.0"
+  },
+  "support": {
+    "issues": "https://github.com/unl/rev_api/issues"
+  },
+  "autoload": {
+    "psr-0": {
+      "RevAPI": "library"
+    }
+  }
+}
