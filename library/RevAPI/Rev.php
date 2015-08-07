@@ -21,7 +21,7 @@ class Rev {
         }
         
         $http_config['request.options']['headers']['Authorization'] = 'Rev ' . $client_api_key .':' . $user_api_key;
-        $http_config['request.options']['headers']['Content-Type'] = 'JSON';
+        $http_config['request.options']['headers']['Content-Type'] = 'application/json';
         
         $this->http_client = new HttpClient('https://' . $host . '/api/v1/', $http_config);
     }
@@ -31,5 +31,21 @@ class Rev {
         $request = $this->http_client->get('orders');
 
         return $request->send()->json();
+    }
+    
+    public function uploadUrl($url, $content_type = null)
+    {
+        $data = array();
+        $data['url'] = $url;
+        
+        if ($content_type) {
+            $data['content_type'] = $content_type;
+        }
+        
+        $data = json_encode($data);
+        
+        $request = $this->http_client->post('inputs', null, $data);
+        
+        return (string)$request->send()->getHeader('Location');
     }
 }
