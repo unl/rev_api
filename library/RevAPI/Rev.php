@@ -84,11 +84,11 @@ class Rev {
     }
 
     /**
-     * @param AbstractOrderSubmission $order
+     * @param CaptionOrderSubmission $order
      * @return string
      * @throws Exception\RequestException
      */
-    public function sendCaptionOrder(AbstractOrderSubmission $order)
+    public function sendCaptionOrder(CaptionOrderSubmission $order)
     {
         $data = $order->generatePostData();
         $data = json_encode($data);
@@ -98,11 +98,11 @@ class Rev {
     }
 
     /**
-     * @param AbstractOrderSubmission $order
+     * @param TranscriptionOrderSubmission $order
      * @return string
      * @throws Exception\RequestException
      */
-    public function sendTranscriptionOrder(AbstractOrderSubmission $order)
+    public function sendTranscriptionOrder(TranscriptionOrderSubmission $order)
     {
         $data = $order->generatePostData();
         $data = json_encode($data);
