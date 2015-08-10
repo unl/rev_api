@@ -96,4 +96,18 @@ class Rev {
 
         return (string)$this->sendRequest($request)->getHeader('Location');
     }
+
+    /**
+     * @param AbstractOrderSubmission $order
+     * @return string
+     * @throws Exception\RequestException
+     */
+    public function sendTranscriptionOrder(AbstractOrderSubmission $order)
+    {
+        $data = $order->generatePostData();
+        $data = json_encode($data);
+        $request = $this->http_client->post('orders', null, $data);
+
+        return (string)$this->sendRequest($request)->getHeader('Location');
+    }
 }

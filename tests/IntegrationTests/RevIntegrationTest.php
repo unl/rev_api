@@ -44,6 +44,23 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertStringStartsWith('http', $result);
     }
     
+    public function testSendTranscriptionOrder()
+    {
+        $rev = $this->getClient();
+
+        $uri = $rev->uploadUrl(self::MEDIA_URL);
+
+        $order = new TranscriptionOrderSubmission($rev);
+
+        $order->addInput($uri);
+        $order->includeTimestamps();
+        $order->transcribeVerbatim();
+
+        $result = $order->send();
+
+        $this->assertStringStartsWith('http', $result);
+    }
+    
     protected function getClient()
     {
         return new Rev(REV_CLIENT_API_KEY, REV_USER_API_KEY, Rev::SANDBOX_HOST);
