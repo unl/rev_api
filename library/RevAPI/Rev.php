@@ -4,6 +4,7 @@ namespace RevAPI;
 
 use Guzzle\Http\Client as HttpClient;
 use Guzzle\Http\Exception\BadResponseException;
+use Guzzle\Http\Message\RequestInterface;
 
 class Rev {
     
@@ -26,14 +27,42 @@ class Rev {
         
         $this->http_client = new HttpClient('https://' . $host . '/api/v1/', $http_config);
     }
-    
+
+    /**
+     * Send a request and convert any BadResponseExceptions to a RequestException
+     * 
+     * @param RequestInterface $request
+     * @return \Guzzle\Http\Message\Response
+     * @throws Exception\RequestException
+     */
+    protected function sendRequest(RequestInterface $request)
+    {
+        try {
+            return $request->send();
+        } catch (BadResponseException $e) {
+            throw new Exception\RequestException($e);
+        }
+    }
+
+    /**
+     * Get all orders
+     * 
+     * @return array|bool|float|int|string
+     * @throws Exception\RequestException
+     */
     public function getOrders()
     {
         $request = $this->http_client->get('orders');
 
-        return $request->send()->json();
+        return $this->sendRequest($request)->json();
     }
-    
+
+    /**
+     * @param $url
+     * @param null $content_type
+     * @return string
+     * @throws Exception\RequestException
+     */
     public function uploadUrl($url, $content_type = null)
     {
         $data = array();
@@ -46,20 +75,25 @@ class Rev {
         $data = json_encode($data);
         
         $request = $this->http_client->post('inputs', null, $data);
-        
-        return (string)$request->send()->getHeader('Location');
+
+        try {
+            return (string)$this->sendRequest($request)->getHeader('Location');
+        } catch (BadResponseException $e) {
+            throw new Exception\RequestException($e);
+        }
     }
-    
+
+    /**
+     * @param AbstractOrderSubmission $order
+     * @return string
+     * @throws Exception\RequestException
+     */
     public function sendCaptionOrder(AbstractOrderSubmission $order)
     {
         $data = $order->generatePostData();
         $data = json_encode($data);
         $request = $this->http_client->post('orders', null, $data);
 
-        try {
-            return (string)$request->send()->getHeader('Location');
-        } catch (BadResponseException $e) {
-            print_r((string)$e->getResponse()->getBody());
-        }
+        return (string)$this->sendRequest($request)->getHeader('Location');
     }
 }
