@@ -3,6 +3,7 @@
 namespace RevAPI;
 
 use Guzzle\Http\Client as HttpClient;
+use Guzzle\Http\Exception\BadResponseException;
 
 class Rev {
     
@@ -47,5 +48,18 @@ class Rev {
         $request = $this->http_client->post('inputs', null, $data);
         
         return (string)$request->send()->getHeader('Location');
+    }
+    
+    public function sendCaptionOrder(AbstractOrderSubmission $order)
+    {
+        $data = $order->generatePostData();
+        $data = json_encode($data);
+        $request = $this->http_client->post('orders', null, $data);
+
+        try {
+            return (string)$request->send()->getHeader('Location');
+        } catch (BadResponseException $e) {
+            print_r((string)$e->getResponse()->getBody());
+        }
     }
 }
