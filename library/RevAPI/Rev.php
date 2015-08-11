@@ -60,10 +60,11 @@ class Rev {
     /**
      * @param $url
      * @param null $content_type
-     * @return string
+     * @param null $video_length_seconds
+     * @return VideoInput
      * @throws Exception\RequestException
      */
-    public function uploadUrl($url, $content_type = null)
+    public function uploadVideoUrl($url, $content_type = null, $video_length_seconds = null)
     {
         $data = array();
         $data['url'] = $url;
@@ -77,7 +78,36 @@ class Rev {
         $request = $this->http_client->post('inputs', null, $data);
 
         try {
-            return (string)$this->sendRequest($request)->getHeader('Location');
+            $rev_uri = (string)$this->sendRequest($request)->getHeader('Location');
+            return new VideoInput($rev_uri, $video_length_seconds);
+        } catch (BadResponseException $e) {
+            throw new Exception\RequestException($e);
+        }
+    }
+
+    /**
+     * @param $url
+     * @param $word_length
+     * @param null $content_type
+     * @return DocumentInput
+     * @throws Exception\RequestException
+     */
+    public function uploadDocumentUrl($url, $word_length, $content_type = null)
+    {
+        $data = array();
+        $data['url'] = $url;
+
+        if ($content_type) {
+            $data['content_type'] = $content_type;
+        }
+
+        $data = json_encode($data);
+
+        $request = $this->http_client->post('inputs', null, $data);
+
+        try {
+            $rev_uri = (string)$this->sendRequest($request)->getHeader('Location');
+            return new DocumentInput($rev_uri, $word_length);
         } catch (BadResponseException $e) {
             throw new Exception\RequestException($e);
         }
@@ -103,6 +133,20 @@ class Rev {
      * @throws Exception\RequestException
      */
     public function sendTranscriptionOrder(TranscriptionOrderSubmission $order)
+    {
+        $data = $order->generatePostData();
+        $data = json_encode($data);
+        $request = $this->http_client->post('orders', null, $data);
+
+        return (string)$this->sendRequest($request)->getHeader('Location');
+    }
+    
+    /**
+     * @param TranslationOrderSubmission $order
+     * @return string
+     * @throws Exception\RequestException
+     */
+    public function sendTranslationOrder(TranslationOrderSubmission $order)
     {
         $data = $order->generatePostData();
         $data = json_encode($data);

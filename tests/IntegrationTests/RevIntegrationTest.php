@@ -14,24 +14,24 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('orders', $orders);
     }
     
-    public function testUploadURL()
+    public function testUploadVideoURL()
     {
         $rev = $this->getClient();
         
-        $result = $rev->uploadUrl(self::MEDIA_URL);
+        $result = $rev->uploadVideoUrl(self::MEDIA_URL);
         
-        $this->assertStringStartsWith('urn:rev:inputmedia:', $result);
+        $this->assertStringStartsWith('urn:rev:inputmedia:', $result->getURI());
     }
     
     public function testSendCaptionOrder()
     {
         $rev = $this->getClient();
 
-        $uri = $rev->uploadUrl(self::MEDIA_URL);
+        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
         
         $order = new CaptionOrderSubmission($rev);
         
-        $order->addInput($uri);
+        $order->addInput($input);
         
         $order->setClientRef('example reference number');
         $order->setComment('example comment');
@@ -48,13 +48,28 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     {
         $rev = $this->getClient();
 
-        $uri = $rev->uploadUrl(self::MEDIA_URL);
+        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
 
         $order = new TranscriptionOrderSubmission($rev);
 
-        $order->addInput($uri);
+        $order->addInput($input);
         $order->includeTimestamps();
         $order->transcribeVerbatim();
+
+        $result = $order->send();
+
+        $this->assertStringStartsWith('http', $result);
+    }
+
+    public function testSendTranslationOrder()
+    {
+        $rev = $this->getClient();
+
+        $input = $rev->uploadDocumentUrl(self::MEDIA_URL, 400);
+
+        $order = new TranslationOrderSubmission($rev, 'en', 'es');
+
+        $order->addInput($input);
 
         $result = $order->send();
 

@@ -35,22 +35,10 @@ abstract class AbstractOrderSubmission {
 
     /**
      * Add an input
-     * 
-     * @param string $rev_input_uri the uri returned by a POST to the INPUT endpoint
-     * @param int|null $video_length_seconds
+     *
+     * @param AbstractInput $input
      */
-    public function addInput($rev_input_uri, $video_length_seconds = null)
-    {
-        $input = array(
-            'uri' => $rev_input_uri
-        );
-        
-        if (null !== $video_length_seconds) {
-            $input['video_length_seconds'] = $video_length_seconds;
-        }
-
-        $this->inputs[] = $input;
-    }
+    abstract function addInput(AbstractInput $input);
 
     /**
      * @param string $url the absolute URL which REV will post to for notifications

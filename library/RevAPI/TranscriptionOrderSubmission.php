@@ -2,7 +2,9 @@
 
 namespace RevAPI;
 
-class TranscriptionOrderSubmission extends AbstractOrderSubmission
+use RevAPI\Exception\UnexpectedValueException;
+
+class TranscriptionOrderSubmission extends AbstractVideoOrderSubmission
 {
     protected $verbatim = false;
     
