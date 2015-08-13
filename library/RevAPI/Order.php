@@ -10,7 +10,7 @@ class Order
     protected $rev;
 
     /**
-     * @var \stdClass
+     * @var array
      */
     protected $order_data;
 
@@ -18,6 +18,10 @@ class Order
      * The status for complete orders
      */
     const ORDER_STATUS_COMPLETE = 'Complete';
+    
+    const ORDER_TYPE_TRANSCRIPTION = 'transcription';
+    const ORDER_TYPE_CAPTION       = 'caption';
+    const ORDER_TYPE_TRANSLATION   = 'translation';
     
     public function __construct(Rev $rev, $order_data)
     {
@@ -83,5 +87,23 @@ class Order
     public function isComplete()
     {
         return $this->getStatus() == self::ORDER_STATUS_COMPLETE;
+    }
+
+    /**
+     * Get the type of order
+     * 
+     * @return string
+     */
+    public function getOrderType()
+    {
+        if (array_key_exists(self::ORDER_TYPE_CAPTION, $this->order_data)) {
+            return self::ORDER_TYPE_CAPTION;
+        }
+
+        if (array_key_exists(self::ORDER_TYPE_TRANSCRIPTION, $this->order_data)) {
+            return self::ORDER_TYPE_TRANSCRIPTION;
+        }
+        
+        return self::ORDER_TYPE_TRANSLATION;
     }
 }

@@ -119,7 +119,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         $completed_order = false;
         
         foreach ($orders as $order) {
-            if ($order->isComplete()) {
+            if ($order->isComplete() && $order->getOrderType() == Order::ORDER_TYPE_TRANSCRIPTION) {
                 $completed_order = $order;
                 break;
             }
@@ -131,9 +131,18 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         }
         
         $attachments = $completed_order->getAttachments();
-        
+
         foreach ($attachments as $attachment) {
             $this->assertNotEmpty($attachment->getName());
+            
+            if (!$attachment->isMedia()) {
+                $docx = $attachment->getContent();
+                $txt = $attachment->getContent('.txt');
+                
+                $this->assertTrue(is_string($docx));
+                $this->assertTrue(is_string($txt));
+                $this->assertNotEquals($docx, $txt);
+            }
         }
     }
     

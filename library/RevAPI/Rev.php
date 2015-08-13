@@ -7,7 +7,6 @@ use Guzzle\Http\Exception\BadResponseException;
 use Guzzle\Http\Message\RequestInterface;
 
 class Rev {
-    
     const PRODUCTION_HOST = 'www.rev.com';
     const SANDBOX_HOST    = 'api-sandbox.rev.com';
     
@@ -185,5 +184,18 @@ class Rev {
 
         $order_url = (string)$this->sendRequest($request)->getHeader('Location');
         return $this->getOrderNumber($order_url);
+    }
+
+    /**
+     * @param $attachment_id
+     * @param string|null $extension - the extension of the file, defaults to the original file extension. Ex. '.txt'
+     * @return false|string The body of the attachment
+     * @throws Exception\RequestException
+     */
+    public function getAttachmentContent($attachment_id, $extension = null)
+    {
+        $request = $this->http_client->get('attachments/' . $attachment_id . '/content' . $extension);
+        
+        return (string)$this->sendRequest($request)->getBody();
     }
 }

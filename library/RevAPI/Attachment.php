@@ -7,6 +7,8 @@ class Attachment
     protected $rev;
 
     protected $attachment_data;
+    
+    const KIND_MEDIA = 'media';
 
     public function __construct(Rev $rev, $attachment_data)
     {
@@ -32,5 +34,19 @@ class Attachment
     public function getAttachmentData()
     {
         return $this->attachment_data;
+    }
+
+    /**
+     * @param string|null $extension - the extension of the file, defaults to the original file extension. Ex. '.txt'
+     * @return false|string
+     */
+    public function getContent($extension = null)
+    {
+        return $this->rev->getAttachmentContent($this->getId(), $extension);
+    }
+    
+    public function isMedia()
+    {
+        return $this->getKind() == self::KIND_MEDIA;
     }
 }
