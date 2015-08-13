@@ -50,20 +50,22 @@ class Rev {
 
     /**
      * Get all orders
-     * 
-     * @return array|bool|float|int|string
+     *
+     * @param int $page - the number of the page of orders to return. Optional, by default returns the first page
+     * @param int $page_size - the number of orders per page to return. Optional, by default returns 25 orders per page. Page size has to be between 5 and 100
+     * @return Orders
      * @throws Exception\RequestException
      */
-    public function getOrders()
+    public function getOrders($page = 0, $page_size = 25)
     {
-        $request = $this->http_client->get('orders?page=0');
+        $request = $this->http_client->get('orders?page=' . $page . '&page_size=' . $page_size);
 
         return new Orders($this, $this->sendRequest($request)->json());
     }
 
     /**
      * @param $order_number
-     * @return stdClass|false The json_decoded result 
+     * @return array|false The json_decoded result 
      * @throws Exception\RequestException
      */
     public function getOrder($order_number)

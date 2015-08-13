@@ -32,4 +32,43 @@ class Orders extends \ArrayIterator
     {
         return $this->data;
     }
+    
+    public function getResultsPerPage()
+    {
+        return $this->data['results_per_page'];
+    }
+    
+    public function getTotalCount()
+    {
+        return $this->data['total_count'];
+    }
+    
+    public function getCurrentPage()
+    {
+        return $this->data['page'];
+    }
+    
+    public function getNextPage()
+    {
+        $results_per_page = $this->getResultsPerPage();
+        $total_count = $this->getTotalCount();
+        $current_page = $this->getCurrentPage();
+        
+        if (($current_page+1)*$results_per_page < $total_count) {
+            return $this->rev->getOrders($current_page+1);
+        }
+        
+        return false;
+    }
+    
+    public function getPreviousPage()
+    {
+        $current_page = $this->getCurrentPage();
+
+        if ($current_page-1 >= 0) {
+            return $this->rev->getOrders($current_page-1);
+        }
+
+        return false;
+    }
 }

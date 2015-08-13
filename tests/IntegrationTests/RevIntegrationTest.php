@@ -9,8 +9,27 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     public function testGetOrders()
     {
         $rev = $this->getClient();
+        
+        //first page of orders
         $orders = $rev->getOrders();
-        $this->assertArrayHasKey('orders', $orders);
+        
+        $this->assertEquals(0, $orders->getCurrentPage());
+        
+        $previous_page = $orders->getCurrentPage();
+        
+        while ($orders = $orders->getNextPage()) {
+            $this->assertGreaterThan($previous_page, $orders->getCurrentPage());
+            $previous_page = $orders->getCurrentPage();
+        }
+        
+        //Reset to the last page
+        $orders = $rev->getOrders($previous_page);
+
+        //Now, lets go backwards
+        while ($orders = $orders->getPreviousPage()) {
+            $this->assertLessThan($previous_page, $orders->getCurrentPage());
+            $previous_page = $orders->getCurrentPage();
+        }
     }
     
     public function testUploadVideoURL()
