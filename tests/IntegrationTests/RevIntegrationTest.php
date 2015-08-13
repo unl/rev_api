@@ -10,7 +10,6 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     {
         $rev = $this->getClient();
         $orders = $rev->getOrders();
-        
         $this->assertArrayHasKey('orders', $orders);
     }
     
@@ -41,7 +40,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         
         $result = $order->send();
 
-        $this->assertStringStartsWith('http', $result);
+        $this->assertTrue(is_string($result));
     }
     
     public function testSendTranscriptionOrder()
@@ -58,7 +57,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
 
         $result = $order->send();
 
-        $this->assertStringStartsWith('http', $result);
+        $this->assertTrue(is_string($result));
     }
 
     public function testSendTranslationOrder()
@@ -73,7 +72,50 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
 
         $result = $order->send();
 
-        $this->assertStringStartsWith('http', $result);
+        $this->assertTrue(is_string($result));
+    }
+    
+    public function testGetOrder()
+    {
+        $rev = $this->getClient();
+
+        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
+
+        $order = new CaptionOrderSubmission($rev);
+
+        $order->addInput($input);
+
+        $order_number = $order->send();
+
+        $order = $rev->getOrder($order_number);
+        
+        $this->assertInstanceOf('\RevAPI\Order', $order);
+    }
+    
+    public function testGetAttachments()
+    {
+        $rev = $this->getClient();
+        $orders = $rev->getOrders();
+        
+        $completed_order = false;
+        
+        foreach ($orders as $order) {
+            if ($order->isComplete()) {
+                $completed_order = $order;
+                break;
+            }
+        }
+        
+        if (!$completed_order) {
+            $this->markTestSkipped('Unable to find a completed order');
+            return;
+        }
+        
+        $attachments = $completed_order->getAttachments();
+        
+        foreach ($attachments as $attachment) {
+            $this->assertNotEmpty($attachment->getName());
+        }
     }
     
     protected function getClient()

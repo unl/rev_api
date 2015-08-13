@@ -10,6 +10,8 @@ class Rev {
     
     const PRODUCTION_HOST = 'www.rev.com';
     const SANDBOX_HOST    = 'api-sandbox.rev.com';
+    
+    protected $base_api_url;
 
     /**
      * @var HttpClient
@@ -25,7 +27,9 @@ class Rev {
         $http_config['request.options']['headers']['Authorization'] = 'Rev ' . $client_api_key .':' . $user_api_key;
         $http_config['request.options']['headers']['Content-Type'] = 'application/json';
         
-        $this->http_client = new HttpClient('https://' . $host . '/api/v1/', $http_config);
+        $this->base_api_url = 'https://' . $host . '/api/v1/';
+        
+        $this->http_client = new HttpClient($this->base_api_url, $http_config);
     }
 
     /**
@@ -52,9 +56,32 @@ class Rev {
      */
     public function getOrders()
     {
-        $request = $this->http_client->get('orders');
+        $request = $this->http_client->get('orders?page=0');
 
-        return $this->sendRequest($request)->json();
+        return new Orders($this, $this->sendRequest($request)->json());
+    }
+
+    /**
+     * @param $order_number
+     * @return stdClass|false The json_decoded result 
+     * @throws Exception\RequestException
+     */
+    public function getOrder($order_number)
+    {
+        $request = $this->http_client->get('orders/' . $order_number);
+
+        return new Order($this, $this->sendRequest($request)->json());
+    }
+
+    /**
+     * Get the order number from an order URL
+     * 
+     * @param string $order_url - the absolute URL for the order as returned by the API while submitting an order
+     * @return mixed
+     */
+    protected function getOrderNumber($order_url)
+    {
+        return str_replace($this->base_api_url . 'orders/', '', $order_url);
     }
 
     /**
@@ -124,7 +151,8 @@ class Rev {
         $data = json_encode($data);
         $request = $this->http_client->post('orders', null, $data);
 
-        return (string)$this->sendRequest($request)->getHeader('Location');
+        $order_url = (string)$this->sendRequest($request)->getHeader('Location');
+        return $this->getOrderNumber($order_url);
     }
 
     /**
@@ -138,7 +166,8 @@ class Rev {
         $data = json_encode($data);
         $request = $this->http_client->post('orders', null, $data);
 
-        return (string)$this->sendRequest($request)->getHeader('Location');
+        $order_url = (string)$this->sendRequest($request)->getHeader('Location');
+        return $this->getOrderNumber($order_url);
     }
     
     /**
@@ -152,6 +181,7 @@ class Rev {
         $data = json_encode($data);
         $request = $this->http_client->post('orders', null, $data);
 
-        return (string)$this->sendRequest($request)->getHeader('Location');
+        $order_url = (string)$this->sendRequest($request)->getHeader('Location');
+        return $this->getOrderNumber($order_url);
     }
 }
