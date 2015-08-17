@@ -188,6 +188,18 @@ class Rev {
 
     /**
      * @param $attachment_id
+     * @return Attachment The body of the attachment
+     * @throws Exception\RequestException
+     */
+    public function getAttachment($attachment_id)
+    {
+        $request = $this->http_client->get('attachments/' . $attachment_id);
+
+        return new Attachment($this, $this->sendRequest($request)->json());
+    }
+
+    /**
+     * @param $attachment_id
      * @param string|null $extension - the extension of the file, defaults to the original file extension. Ex. '.txt'
      * @return false|string The body of the attachment
      * @throws Exception\RequestException

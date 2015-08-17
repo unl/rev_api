@@ -111,19 +111,28 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\RevAPI\Order', $order);
     }
     
-    public function testGetAttachments()
+    public function testGetAttachment()
     {
         $rev = $this->getClient();
-        $orders = $rev->getOrders();
-        
-        $completed_order = false;
-        
-        foreach ($orders as $order) {
-            if ($order->isComplete() && $order->getOrderType() == Order::ORDER_TYPE_TRANSCRIPTION) {
-                $completed_order = $order;
-                break;
-            }
+
+        $completed_order = $this->getACompletedOrder();
+
+        if (!$completed_order) {
+            $this->markTestSkipped('Unable to find a completed order');
+            return;
         }
+
+        $attachments = $completed_order->getAttachments();
+
+        foreach ($attachments as $attachment) {
+            $via_get_attachment = $rev->getAttachment($attachment->getId());
+            $this->assertEquals($attachment->getId(), $via_get_attachment->getId(), 'the two should have the same ID');
+        }
+    }
+    
+    public function testGetAttachments()
+    {
+        $completed_order = $this->getACompletedOrder();
         
         if (!$completed_order) {
             $this->markTestSkipped('Unable to find a completed order');
@@ -144,6 +153,30 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
                 $this->assertNotEquals($docx, $txt);
             }
         }
+    }
+
+    /**
+     * Get a completed order
+     * 
+     * @param null $order_type
+     * @return bool|mixed|Order
+     */
+    protected function getACompletedOrder($order_type = null)
+    {
+        if (!$order_type) {
+            $order_type = Order::ORDER_TYPE_TRANSCRIPTION;
+        }
+        
+        $rev = $this->getClient();
+        $orders = $rev->getOrders();
+
+        foreach ($orders as $order) {
+            if ($order->isComplete() && $order->getOrderType() == $order_type) {
+                return $order;
+            }
+        }
+        
+        return false;
     }
     
     protected function getClient()
