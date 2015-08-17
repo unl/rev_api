@@ -154,6 +154,25 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
             }
         }
     }
+    
+    public function testCancelOrder()
+    {
+        $rev = $this->getClient();
+
+        //Create a new order to cancel
+        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
+
+        $order = new CaptionOrderSubmission($rev);
+
+        $order->addInput($input);
+
+        $order_number = $order->send();
+        
+        $result = $rev->cancelOrder($order_number);
+        
+        //Now, cancel it (should return true)
+        $this->assertEquals(true, $result);
+    }
 
     /**
      * Get a completed order

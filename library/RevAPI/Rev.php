@@ -210,4 +210,24 @@ class Rev {
         
         return (string)$this->sendRequest($request)->getBody();
     }
+
+    /**
+     * Cancel an order
+     * 
+     * @param $order_num
+     * @return bool - true on success, exception or false on error
+     * @throws Exception\RequestException
+     */
+    public function cancelOrder($order_num)
+    {
+        $request = $this->http_client->post('orders/' . $order_num . '/cancel');
+        
+        $result = $this->sendRequest($request);
+        
+        if (204 == $result->getStatusCode()) {
+            return true;
+        }
+        
+        return false;
+    }
 }
