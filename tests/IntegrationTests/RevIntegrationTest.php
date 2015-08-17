@@ -175,6 +175,22 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @throws Exception\RequestException
+     */
+    public function testRequestException()
+    {
+        $rev = $this->getClient();
+        
+        try {
+            //Send an invalid URL
+            $input = $rev->uploadVideoUrl('test');
+        } catch (Exception\RequestException $e) {
+            $this->assertEquals(10002, $e->getRevCode());
+            $this->assertEquals('Could not retrieve media - the media URL was malformed', $e->getRevMessage());
+        }
+    }
+    
+    /**
      * Get a completed order
      * 
      * @param null $order_type
