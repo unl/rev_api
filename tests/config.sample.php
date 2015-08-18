@@ -1,3 +1,3 @@
 <?php
-$_ENV['REV_CLIENT_API_KEY'] = 'your client api key';
-$_ENV['REV_USER_API_KEY'] = 'your user api key';
+putenv('REV_CLIENT_API_KEY=yourkey');
+putenv('REV_USER_API_KEY=yourkey');

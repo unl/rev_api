@@ -5,6 +5,15 @@ namespace RevAPI;
 class RevIntegrationTest extends \PHPUnit_Framework_TestCase
 {
     const MEDIA_URL = 'http://mediahub.unl.edu/uploads/a07d73f214fe6bacbd446e6b90be8aa9.mp4';
+
+    protected function setUp()
+    {
+        if (false == getenv('REV_CLIENT_API_KEY') || false == getenv('REV_USER_API_KEY')) {
+            $this->markTestSkipped(
+                'No api keys were found in the environment'
+            );
+        }
+    }
     
     public function testGetOrders()
     {
@@ -216,7 +225,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     
     protected function getClient()
     {
-        return new Rev($_ENV['REV_CLIENT_API_KEY'], $_ENV['REV_USER_API_KEY'], Rev::SANDBOX_HOST);
+        return new Rev(getenv('REV_CLIENT_API_KEY'), getenv('REV_USER_API_KEY'), Rev::SANDBOX_HOST);
     }
     
 }
