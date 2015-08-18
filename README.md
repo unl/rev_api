@@ -67,7 +67,7 @@ while ($orders = $orders->getNextPage()) {
 
 ## Implementation Progress:
 
-- [\] POST /inputs
+- [ ] POST /inputs
 - [x] -- via URL
 - [ ] -- via upload
 - [ ] -- via upload w/ multipart requests
