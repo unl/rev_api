@@ -216,7 +216,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     
     protected function getClient()
     {
-        return new Rev(REV_CLIENT_API_KEY, REV_USER_API_KEY, Rev::SANDBOX_HOST);
+        return new Rev($_ENV['REV_CLIENT_API_KEY'], $_ENV['REV_USER_API_KEY'], Rev::SANDBOX_HOST);
     }
     
 }
