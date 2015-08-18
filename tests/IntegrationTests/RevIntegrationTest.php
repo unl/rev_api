@@ -219,7 +219,16 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
                 return $order;
             }
         }
-        
+
+        //Check the next pages
+        while ($orders = $orders->getNextPage()) {
+            foreach ($orders as $order) {
+                if ($order->isComplete() && $order->getOrderType() == $order_type) {
+                    return $order;
+                }
+            }
+        }
+
         return false;
     }
     
