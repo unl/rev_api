@@ -14,7 +14,7 @@ branches:
     - master
     
 before_script:
-    - composer -n --dev
+    - composer -n install --dev
   
 env:
 secure: "flgQs7hTyf+yDHrCkm5IBbOBNiQ71xpJXOhVgxPFBiLLWSgpxLuGlbWtbA2vLRIvy6tvCy8q7BT9TBixxMwgu5AfvqVEWc3K/Oyn0o6jtEEwu4UsVbZKsuakdDVbwXSgvvaR0pod+bq0lhw+yQDTB4sOFjO09LsbhtLohaGAbHZQ5eF+DNswETkg2zBArJ8/b5Am8H4V31Q2vEsUMsVWyCFnOTY8vqbTy3aKEPjUZEovAMKr8FjZNWlJFDgLAncaUHL8ArFVqVZXyBO60dG+ZDHi79Rg7yNBGU2gM92WNZwhEO1egKr8OFCGfFfpWpOqbpC51a9Ra2CyLKE3zgb++c3gZkQ3ziKWFRf2qUU4/yEJwgheOitt1W9YXOt4cbsI+/W4Th2U4DsM9jtepICzkDCBBbMmqeINof8IrobZyfPZhLDw4sDiGfflnc9v4G1OWDR8JCF4CvjWpp642iBB1UiqO3Y8jLao3SteFFyoaqb6wVEPyoCBRjagvNavx08oKC5o6jeOyvQCLMKEwT9Wv6n9QSIMSgZgUb1H0TgbjQ7UnMzyOKivwj8e0wltDhHPrS5tg+L6NqME0g/F9n+bfHboNkKn/lXj0JkQtzLe2xrKtvXQlTlsOlQtNoND1o4VSfn6srM3bLmWoZ4FTe1H91gnTYXzi58qbNlqVEc7e70="
