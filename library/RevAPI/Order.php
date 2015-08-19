@@ -4,6 +4,12 @@ namespace RevAPI;
 
 class Order
 {
+    const ORDER_STATUS_COMPLETE = 'Complete';
+
+    const ORDER_TYPE_TRANSCRIPTION = 'transcription';
+    const ORDER_TYPE_CAPTION       = 'caption';
+    const ORDER_TYPE_TRANSLATION   = 'translation';
+    
     /**
      * @var Rev
      */
@@ -13,15 +19,6 @@ class Order
      * @var array
      */
     protected $order_data;
-
-    /**
-     * The status for complete orders
-     */
-    const ORDER_STATUS_COMPLETE = 'Complete';
-    
-    const ORDER_TYPE_TRANSCRIPTION = 'transcription';
-    const ORDER_TYPE_CAPTION       = 'caption';
-    const ORDER_TYPE_TRANSLATION   = 'translation';
     
     public function __construct(Rev $rev, $order_data)
     {

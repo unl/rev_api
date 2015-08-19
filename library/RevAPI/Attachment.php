@@ -4,11 +4,11 @@ namespace RevAPI;
 
 class Attachment
 {
+    const KIND_MEDIA = 'media';
+    
     protected $rev;
 
     protected $attachment_data;
-    
-    const KIND_MEDIA = 'media';
 
     public function __construct(Rev $rev, $attachment_data)
     {

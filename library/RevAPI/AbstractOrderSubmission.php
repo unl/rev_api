@@ -3,6 +3,12 @@
 namespace RevAPI;
 
 abstract class AbstractOrderSubmission {
+
+    const PRIORITY_TIME_INSENSITIVE = 'TimeInsensitive';
+    const PRIORITY_NORMAL = 'Normal';
+
+    const NOTIFICATION_LEVEL_DETAILED = 'Detailed';
+    const NOTIFICATION_LEVEL_FINAL_ONLY = 'FinalOnly';
     
     /**
      * @var Rev
@@ -18,12 +24,6 @@ abstract class AbstractOrderSubmission {
     protected $inputs = array();
 
     protected $notification = array();
-    
-    const PRIORITY_TIME_INSENSITIVE = 'TimeInsensitive';
-    const PRIORITY_NORMAL = 'Normal';
-    
-    const NOTIFICATION_LEVEL_DETAILED = 'Detailed';
-    const NOTIFICATION_LEVEL_FINAL_ONLY = 'FinalOnly';
 
     /**
      * @param Rev $rev
