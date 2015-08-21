@@ -1,3 +1,5 @@
 <?php
-putenv('REV_CLIENT_API_KEY=yourkey');
-putenv('REV_USER_API_KEY=yourkey');
+return array(
+    'REV_CLIENT_API_KEY' => 'your key',
+    'REV_USER_API_KEY' => 'your key'
+);
