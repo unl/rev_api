@@ -57,7 +57,7 @@ class Rev {
      */
     public function getOrders($page = 0, $page_size = 25)
     {
-        $request = $this->http_client->get('orders?page=' . $page . '&page_size=' . $page_size);
+        $request = $this->http_client->get('orders?page=' . (int)$page . '&page_size=' . (int)$page_size);
 
         return new Orders($this, $this->sendRequest($request)->json());
     }
