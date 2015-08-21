@@ -4,8 +4,6 @@ namespace RevAPI;
 
 class RevIntegrationTest extends \PHPUnit_Framework_TestCase
 {
-    const MEDIA_URL = 'http://mediahub.unl.edu/uploads/a07d73f214fe6bacbd446e6b90be8aa9.mp4';
-
     protected function setUp()
     {
         if (false == getenv('REV_CLIENT_API_KEY') || false == getenv('REV_USER_API_KEY')) {
@@ -45,7 +43,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     {
         $rev = $this->getClient();
         
-        $result = $rev->uploadVideoUrl(self::MEDIA_URL);
+        $result = $rev->uploadVideoUrl(getenv('TEST_VIDEO_URL'));
         
         $this->assertStringStartsWith('urn:rev:inputmedia:', $result->getURI());
     }
@@ -54,7 +52,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     {
         $rev = $this->getClient();
 
-        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
+        $input = $rev->uploadVideoUrl(getenv('TEST_VIDEO_URL'));
         
         $order = new CaptionOrderSubmission($rev);
         
@@ -75,7 +73,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     {
         $rev = $this->getClient();
 
-        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
+        $input = $rev->uploadVideoUrl(getenv('TEST_VIDEO_URL'));
 
         $order = new TranscriptionOrderSubmission($rev);
 
@@ -92,7 +90,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     {
         $rev = $this->getClient();
 
-        $input = $rev->uploadDocumentUrl(self::MEDIA_URL, 400);
+        $input = $rev->uploadDocumentUrl(getenv('TEST_VIDEO_URL'), 400);
 
         $order = new TranslationOrderSubmission($rev, 'en', 'es');
 
@@ -107,7 +105,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
     {
         $rev = $this->getClient();
 
-        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
+        $input = $rev->uploadVideoUrl(getenv('TEST_VIDEO_URL'));
 
         $order = new CaptionOrderSubmission($rev);
 
@@ -169,7 +167,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         $rev = $this->getClient();
 
         //Create a new order to cancel
-        $input = $rev->uploadVideoUrl(self::MEDIA_URL);
+        $input = $rev->uploadVideoUrl(getenv('TEST_VIDEO_URL'));
 
         $order = new CaptionOrderSubmission($rev);
 
