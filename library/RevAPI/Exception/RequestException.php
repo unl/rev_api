@@ -2,8 +2,9 @@
 
 namespace RevAPI\Exception;
 use Guzzle\Http\Exception\BadResponseException;
+use RevAPI\Exception;
 
-class RequestException extends \Exception {
+class RequestException extends Exception {
     
     protected $rev_message;
     
