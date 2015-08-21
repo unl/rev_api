@@ -69,7 +69,7 @@ class Order
     /**
      * Get the raw order data
      * 
-     * @return \stdClass
+     * @return array
      */
     public function getOrderData()
     {

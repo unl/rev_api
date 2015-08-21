@@ -43,17 +43,17 @@ class TranslationOrderSubmission extends AbstractOrderSubmission
     }
     
     /**
-     * @return \stdClass
+     * @return array
      */
     public function generatePostData()
     {
         $data = $this->generateBasePostData();
 
-        $data->transcription_options = new \stdClass();
-        $data->transcription_options->inputs = $this->generatePostDataForInputs();
+        $data['transcription_options'] = array();
+        $data['transcription_options']['inputs'] = $this->generatePostDataForInputs();
 
-        $data->transcription_options->source_language_code = $this->source_language_code;
-        $data->transcription_options->destination_language_code = $this->destination_language_code;
+        $data['transcription_options']['source_language_code'] = $this->source_language_code;
+        $data['transcription_options']['destination_language_code'] = $this->destination_language_code;
 
         return $data;
     }

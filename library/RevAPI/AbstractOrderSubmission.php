@@ -120,24 +120,24 @@ abstract class AbstractOrderSubmission {
      * All of the different kinds of orders have a similar set of attributes.
      * This function generates an object with those attributes for use in the POST request
      * 
-     * @return \stdClass - The base data describing the order
+     * @return array - The base data describing the order
      */
     public function generateBasePostData()
     {
-        $data = new \stdClass();
+        $data = array();
 
-        $data->priority = $this->priority;
+        $data['priority'] = $this->priority;
 
         if ($this->client_ref) {
-            $data->client_ref = $this->client_ref;
+            $data['client_ref'] = $this->client_ref;
         }
 
         if ($this->comment) {
-            $data->comment = $this->comment;
+            $data['comment'] = $this->comment;
         }
 
         if (!empty($this->notification)) {
-            $data->notification = (object)$this->notification;
+            $data['notification'] = $this->notification;
         }
 
         return $data;
@@ -146,7 +146,7 @@ abstract class AbstractOrderSubmission {
     /**
      * Generate the final post data array
      * 
-     * @return \stdClass - The final object describing the order
+     * @return array - The final object describing the order
      */
     abstract function generatePostData();
 

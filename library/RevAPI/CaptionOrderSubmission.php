@@ -19,16 +19,16 @@ class CaptionOrderSubmission extends AbstractVideoOrderSubmission
     }
 
     /**
-     * @return \stdClass
+     * @return array
      */
     public function generatePostData()
     {
         $data = $this->generateBasePostData();
         
-        $data->caption_options = new \stdClass();
-        $data->caption_options->inputs = $this->generatePostDataForInputs();
+        $data['caption_options'] = array();
+        $data['caption_options']['inputs'] = $this->generatePostDataForInputs();
         
-        $data->caption_options->output_file_formats = $this->output_file_formats;
+        $data['caption_options']['output_file_formats'] = $this->output_file_formats;
         
         return $data;
     }

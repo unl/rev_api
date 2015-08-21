@@ -43,17 +43,17 @@ class TranscriptionOrderSubmission extends AbstractVideoOrderSubmission
     }
 
     /**
-     * @return \stdClass
+     * @return array
      */
     public function generatePostData()
     {
         $data = $this->generateBasePostData();
 
-        $data->transcription_options = new \stdClass();
-        $data->transcription_options->inputs = $this->generatePostDataForInputs();
+        $data['transcription_options'] = array();
+        $data['transcription_options']['inputs'] = $this->generatePostDataForInputs();
 
-        $data->transcription_options->verbatim = $this->verbatim;
-        $data->transcription_options->timestamps = $this->timestamps;
+        $data['transcription_options']['verbatim'] = $this->verbatim;
+        $data['transcription_options']['timestamps'] = $this->timestamps;
 
         return $data;
     }
