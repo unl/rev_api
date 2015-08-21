@@ -11,6 +11,8 @@ class Orders extends \ArrayIterator
     
     protected $data;
     
+    protected $orders;
+    
     public function __construct(Rev $rev, $orders_array) {
         $this->rev = $rev;
         $this->data = $orders_array;
@@ -24,8 +26,13 @@ class Orders extends \ArrayIterator
     {
         $current = parent::current();
         
-        //Grab the order with the API call to get attachments and comments
-        return $this->rev->getOrder($current['order_number']);
+        if (!isset($this->orders[$current['order_number']])) {
+            //Grab the order with the API call to get attachments and comments
+            //Also avoid calling multiple times while iterating
+            $this->orders[$current['order_number']] = $this->rev->getOrder($current['order_number']);
+        }
+        
+        return $this->orders[$current['order_number']];
     }
     
     public function getOrdersData()
