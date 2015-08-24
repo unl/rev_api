@@ -2,9 +2,9 @@
 
 namespace RevAPI;
 
-use Guzzle\Http\Client as HttpClient;
-use Guzzle\Http\Exception\BadResponseException;
-use Guzzle\Http\Message\RequestInterface;
+use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Request;
 
 class Rev {
     const PRODUCTION_HOST = 'www.rev.com';
@@ -22,27 +22,29 @@ class Rev {
         if (null == $host) {
             $host = self::PRODUCTION_HOST;
         }
-        
-        $http_config['request.options']['headers']['Authorization'] = 'Rev ' . $client_api_key .':' . $user_api_key;
-        $http_config['request.options']['headers']['Content-Type'] = 'application/json';
-        
+
         $this->base_api_url = 'https://' . $host . '/api/v1/';
         
-        $this->http_client = new HttpClient($this->base_api_url, $http_config);
+        $http_config['headers']['Authorization'] = 'Rev ' . $client_api_key .':' . $user_api_key;
+        $http_config['headers']['Content-Type'] = 'application/json';
+        $http_config['base_uri'] = $this->base_api_url;
+        
+        
+        $this->http_client = new HttpClient($http_config);
     }
 
     /**
      * Send a request and convert any BadResponseExceptions to a RequestException
      * 
-     * @param RequestInterface $request
-     * @return \Guzzle\Http\Message\Response
+     * @param \GuzzleHttp\Psr7\Request $request
+     * @return \Psr\Http\Message\ResponseInterface
      * @throws Exception\RequestException
      */
-    protected function sendRequest(RequestInterface $request)
+    protected function sendRequest(Request $request)
     {
         try {
-            return $request->send();
-        } catch (BadResponseException $e) {
+            return $this->http_client->send($request);
+        } catch (ClientException $e) {
             throw new Exception\RequestException($e);
         }
     }
@@ -57,9 +59,11 @@ class Rev {
      */
     public function getOrders($page = 0, $page_size = 25)
     {
-        $request = $this->http_client->get('orders?page=' . (int)$page . '&page_size=' . (int)$page_size);
+        $request = new Request('GET', 'orders?page=' . (int)$page . '&page_size=' . (int)$page_size);
 
-        return new Orders($this, $this->sendRequest($request)->json());
+        $response = $this->sendRequest($request);
+        
+        return new Orders($this, json_decode($response->getBody(), true));
     }
 
     /**
@@ -69,9 +73,11 @@ class Rev {
      */
     public function getOrder($order_number)
     {
-        $request = $this->http_client->get('orders/' . $order_number);
+        $request = new Request('GET', 'orders/' . $order_number);
+        
+        $response = $this->sendRequest($request);
 
-        return new Order($this, $this->sendRequest($request)->json());
+        return new Order($this, json_decode($response->getBody(), true));
     }
 
     /**
@@ -103,12 +109,12 @@ class Rev {
         
         $data = json_encode($data);
         
-        $request = $this->http_client->post('inputs', null, $data);
+        $request = new Request('POST', 'inputs', array(), $data);
 
         try {
-            $rev_uri = (string)$this->sendRequest($request)->getHeader('Location');
+            $rev_uri = $this->sendRequest($request)->getHeader('Location')[0];
             return new VideoInput($rev_uri, $video_length_seconds);
-        } catch (BadResponseException $e) {
+        } catch (ClientException $e) {
             throw new Exception\RequestException($e);
         }
     }
@@ -130,13 +136,13 @@ class Rev {
         }
 
         $data = json_encode($data);
-
-        $request = $this->http_client->post('inputs', null, $data);
+        
+        $request = new Request('POST', 'inputs', array(), $data);
 
         try {
-            $rev_uri = (string)$this->sendRequest($request)->getHeader('Location');
+            $rev_uri = (string)$this->sendRequest($request)->getHeader('Location')[0];
             return new DocumentInput($rev_uri, $word_length);
-        } catch (BadResponseException $e) {
+        } catch (ClientException $e) {
             throw new Exception\RequestException($e);
         }
     }
@@ -150,9 +156,9 @@ class Rev {
     {
         $data = $order->generatePostData();
         $data = json_encode($data);
-        $request = $this->http_client->post('orders', null, $data);
+        $request = new Request('POST', 'orders', array(), $data);
 
-        $order_url = (string)$this->sendRequest($request)->getHeader('Location');
+        $order_url = $this->sendRequest($request)->getHeader('Location')[0];
         return $this->getOrderNumber($order_url);
     }
 
@@ -165,9 +171,9 @@ class Rev {
     {
         $data = $order->generatePostData();
         $data = json_encode($data);
-        $request = $this->http_client->post('orders', null, $data);
+        $request = new Request('POST', 'orders', array(), $data);
 
-        $order_url = (string)$this->sendRequest($request)->getHeader('Location');
+        $order_url = (string)$this->sendRequest($request)->getHeader('Location')[0];
         return $this->getOrderNumber($order_url);
     }
     
@@ -180,9 +186,9 @@ class Rev {
     {
         $data = $order->generatePostData();
         $data = json_encode($data);
-        $request = $this->http_client->post('orders', null, $data);
+        $request = new Request('POST', 'orders', array(), $data);
 
-        $order_url = (string)$this->sendRequest($request)->getHeader('Location');
+        $order_url = (string)$this->sendRequest($request)->getHeader('Location')[0];
         return $this->getOrderNumber($order_url);
     }
 
@@ -193,9 +199,9 @@ class Rev {
      */
     public function getAttachment($attachment_id)
     {
-        $request = $this->http_client->get('attachments/' . $attachment_id);
-
-        return new Attachment($this, $this->sendRequest($request)->json());
+        $request = new Request('GET', 'attachments/' . $attachment_id);
+        $response = $this->sendRequest($request);
+        return new Attachment($this, json_decode($response->getBody(), true));
     }
 
     /**
@@ -206,7 +212,7 @@ class Rev {
      */
     public function getAttachmentContent($attachment_id, $extension = null)
     {
-        $request = $this->http_client->get('attachments/' . $attachment_id . '/content' . $extension);
+        $request = new Request('GET', 'attachments/' . $attachment_id . '/content' . $extension);
         
         return (string)$this->sendRequest($request)->getBody();
     }
@@ -220,7 +226,7 @@ class Rev {
      */
     public function cancelOrder($order_num)
     {
-        $request = $this->http_client->post('orders/' . $order_num . '/cancel');
+        $request = new Request('POST', 'orders/' . $order_num . '/cancel');
         
         $result = $this->sendRequest($request);
         
