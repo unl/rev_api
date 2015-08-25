@@ -1,0 +1,101 @@
+[
+    {
+        "status": 201,
+        "headers": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "Expires": [
+                "-1"
+            ],
+            "Location": [
+                "urn:rev:inputmedia:XHVwbG9hZHMvMjAxNS0wOC0yNC9lNGUyM2UxYy1jNjMzLTRmM2EtYjNkNy1iNGZkZjBiNzhkNzUvYTA3ZDczZjIxNGZlNmJhY2JkNDQ2ZTZiOTBiZThhYTkubXA0"
+            ],
+            "Server": [
+                "Microsoft-IIS\/8.0"
+            ],
+            "X-Powered-By": [
+                "ASP.NET"
+            ],
+            "Date": [
+                "Mon, 24 Aug 2015 18:33:36 GMT"
+            ],
+            "Content-Length": [
+                "0"
+            ],
+            "X-VCR-Recording": [
+                "1440441216"
+            ]
+        },
+        "body": "",
+        "version": "1.1",
+        "reason": "Created"
+    },
+    {
+        "status": 201,
+        "headers": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "Expires": [
+                "-1"
+            ],
+            "Location": [
+                "https:\/\/api-sandbox.rev.com\/api\/v1\/orders\/CP0075115029"
+            ],
+            "Server": [
+                "Microsoft-IIS\/8.0"
+            ],
+            "X-Powered-By": [
+                "ASP.NET"
+            ],
+            "Date": [
+                "Mon, 24 Aug 2015 18:33:36 GMT"
+            ],
+            "Content-Length": [
+                "0"
+            ],
+            "X-VCR-Recording": [
+                "1440441217"
+            ]
+        },
+        "body": "",
+        "version": "1.1",
+        "reason": "Created"
+    },
+    {
+        "status": 204,
+        "headers": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "Expires": [
+                "-1"
+            ],
+            "Server": [
+                "Microsoft-IIS\/8.0"
+            ],
+            "X-Powered-By": [
+                "ASP.NET"
+            ],
+            "Date": [
+                "Mon, 24 Aug 2015 18:33:36 GMT"
+            ],
+            "X-VCR-Recording": [
+                "1440441217"
+            ]
+        },
+        "body": "",
+        "version": "1.1",
+        "reason": "No Content"
+    }
+]

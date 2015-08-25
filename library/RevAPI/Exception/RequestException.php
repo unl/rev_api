@@ -1,7 +1,7 @@
 <?php
 
 namespace RevAPI\Exception;
-use Guzzle\Http\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
 use RevAPI\Exception;
 
 class RequestException extends Exception {
@@ -10,7 +10,7 @@ class RequestException extends Exception {
     
     protected $rev_code;
     
-    function __construct(BadResponseException $badResponseException)
+    function __construct(ClientException $badResponseException)
     {
         $message  = $badResponseException->message;
         $response = $badResponseException->getResponse()->getBody();

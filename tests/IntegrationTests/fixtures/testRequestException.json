@@ -1,0 +1,37 @@
+[
+    {
+        "status": 400,
+        "headers": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "Content-Length": [
+                "81"
+            ],
+            "Content-Type": [
+                "application\/json; charset=utf-8"
+            ],
+            "Expires": [
+                "-1"
+            ],
+            "Server": [
+                "Microsoft-IIS\/8.0"
+            ],
+            "X-Powered-By": [
+                "ASP.NET"
+            ],
+            "Date": [
+                "Mon, 24 Aug 2015 18:33:36 GMT"
+            ],
+            "X-VCR-Recording": [
+                "1440441217"
+            ]
+        },
+        "body": "{\"code\":10002,\"message\":\"Could not retrieve media - the media URL was malformed\"}",
+        "version": "1.1",
+        "reason": "Bad Request"
+    }
+]

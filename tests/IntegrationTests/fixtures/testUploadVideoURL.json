@@ -1,0 +1,37 @@
+[
+    {
+        "status": 201,
+        "headers": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "Expires": [
+                "-1"
+            ],
+            "Location": [
+                "urn:rev:inputmedia:XHVwbG9hZHMvMjAxNS0wOC0yNC9iYmI4NTE3Zi0yNjQ4LTRiMWQtYWVlMy04NmE5ODQwYTkzMWQvYTA3ZDczZjIxNGZlNmJhY2JkNDQ2ZTZiOTBiZThhYTkubXA0"
+            ],
+            "Server": [
+                "Microsoft-IIS\/8.0"
+            ],
+            "X-Powered-By": [
+                "ASP.NET"
+            ],
+            "Date": [
+                "Mon, 24 Aug 2015 18:33:16 GMT"
+            ],
+            "Content-Length": [
+                "0"
+            ],
+            "X-VCR-Recording": [
+                "1440441196"
+            ]
+        },
+        "body": "",
+        "version": "1.1",
+        "reason": "Created"
+    }
+]

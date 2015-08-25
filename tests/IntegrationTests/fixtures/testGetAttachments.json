@@ -1,0 +1,40 @@
+[
+    {
+        "status": 200,
+        "headers": {
+            "Cache-Control": [
+                "no-cache"
+            ],
+            "Pragma": [
+                "no-cache"
+            ],
+            "Content-Length": [
+                "68"
+            ],
+            "Content-Type": [
+                "text\/plain; charset=utf-8"
+            ],
+            "Expires": [
+                "-1"
+            ],
+            "Server": [
+                "Microsoft-IIS\/8.0"
+            ],
+            "Content-Disposition": [
+                "attachment; filename=sample_transcription.txt"
+            ],
+            "X-Powered-By": [
+                "ASP.NET"
+            ],
+            "Date": [
+                "Mon, 24 Aug 2015 18:33:33 GMT"
+            ],
+            "X-VCR-Recording": [
+                "1440441213"
+            ]
+        },
+        "body": "Adam:\tThis is a sample first line\nMike:\tThis is a sample second line",
+        "version": "1.1",
+        "reason": "OK"
+    }
+]
