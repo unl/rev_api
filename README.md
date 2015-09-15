@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/unl/rev_api.svg?branch=master)](https://travis-ci.org/unl/rev_api)
+[![Packagist Version](https://img.shields.io/packagist/v/unl/rev-api.svg)](https://packagist.org/packages/unl/rev-api)
+
 # rev_api
 rev.com api in PHP
 
