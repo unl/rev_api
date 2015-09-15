@@ -9,14 +9,23 @@ use GuzzleHttp\Psr7\Request;
 class Rev {
     const PRODUCTION_HOST = 'www.rev.com';
     const SANDBOX_HOST    = 'api-sandbox.rev.com';
-    
+
+    /**
+     * @var string
+     */
     protected $base_api_url;
 
     /**
      * @var HttpClient
      */
     protected $http_client;
-    
+
+    /**
+     * @param string $client_api_key
+     * @param string $user_api_key
+     * @param string|null $host - if null, it will use the default production host
+     * @param array $http_config - array of guzzle http configuration options
+     */
     public function __construct($client_api_key, $user_api_key, $host = null, $http_config = array())
     {
         if (null == $host) {
@@ -68,7 +77,7 @@ class Rev {
 
     /**
      * @param $order_number
-     * @return array|false The json_decoded result 
+     * @return Order
      * @throws Exception\RequestException
      */
     public function getOrder($order_number)
@@ -84,7 +93,7 @@ class Rev {
      * Get the order number from an order URL
      * 
      * @param string $order_url - the absolute URL for the order as returned by the API while submitting an order
-     * @return mixed
+     * @return string
      */
     protected function getOrderNumber($order_url)
     {
@@ -92,9 +101,9 @@ class Rev {
     }
 
     /**
-     * @param $url
-     * @param null $content_type
-     * @param null $video_length_seconds
+     * @param string $url - the absolute URL to the video
+     * @param string|null $content_type
+     * @param int|null $video_length_seconds
      * @return VideoInput
      * @throws Exception\RequestException
      */
@@ -120,9 +129,9 @@ class Rev {
     }
 
     /**
-     * @param $url
-     * @param $word_length
-     * @param null $content_type
+     * @param string $url - the absolute URL to the document
+     * @param int $word_length
+     * @param string|null $content_type
      * @return DocumentInput
      * @throws Exception\RequestException
      */
@@ -193,7 +202,7 @@ class Rev {
     }
 
     /**
-     * @param $attachment_id
+     * @param string $attachment_id
      * @return Attachment The body of the attachment
      * @throws Exception\RequestException
      */
@@ -205,7 +214,7 @@ class Rev {
     }
 
     /**
-     * @param $attachment_id
+     * @param string $attachment_id
      * @param string|null $extension - the extension of the file, defaults to the original file extension. Ex. '.txt'
      * @return false|string The body of the attachment
      * @throws Exception\RequestException
@@ -220,7 +229,7 @@ class Rev {
     /**
      * Cancel an order
      * 
-     * @param $order_num
+     * @param string $order_num
      * @return bool - true on success, exception or false on error
      * @throws Exception\RequestException
      */
