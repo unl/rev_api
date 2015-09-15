@@ -5,7 +5,7 @@ namespace RevAPI;
 class CaptionOrderSubmission extends AbstractVideoOrderSubmission
 {
     protected $output_file_formats = array(
-        'WebVTT'
+        'WebVtt'
     );
 
     /**
