@@ -33,6 +33,9 @@ class CaptionOrderSubmission extends AbstractVideoOrderSubmission
         return $data;
     }
 
+    /**
+     * @return string - the order number for the new order
+     */
     public function send()
     {
         return $this->rev->sendCaptionOrder($this);

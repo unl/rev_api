@@ -153,7 +153,7 @@ abstract class AbstractOrderSubmission {
     /**
      * Send the order.
      * 
-     * @return string - Will return the URI for the order on success
+     * @return string - the order number for the new order
      */
     abstract function send();
 }

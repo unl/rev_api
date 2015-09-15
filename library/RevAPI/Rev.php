@@ -158,7 +158,7 @@ class Rev {
 
     /**
      * @param CaptionOrderSubmission $order
-     * @return string
+     * @return string - the order number for the new order
      * @throws Exception\RequestException
      */
     public function sendCaptionOrder(CaptionOrderSubmission $order)
@@ -173,7 +173,7 @@ class Rev {
 
     /**
      * @param TranscriptionOrderSubmission $order
-     * @return string
+     * @return string - the order number for the new order
      * @throws Exception\RequestException
      */
     public function sendTranscriptionOrder(TranscriptionOrderSubmission $order)
@@ -188,7 +188,7 @@ class Rev {
     
     /**
      * @param TranslationOrderSubmission $order
-     * @return string
+     * @return string - the order number for the new order
      * @throws Exception\RequestException
      */
     public function sendTranslationOrder(TranslationOrderSubmission $order)

@@ -58,6 +58,9 @@ class TranslationOrderSubmission extends AbstractOrderSubmission
         return $data;
     }
 
+    /**
+     * @return string - the order number for the new order
+     */
     public function send()
     {
         return $this->rev->sendTranslationOrder($this);
