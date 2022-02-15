@@ -8,10 +8,15 @@ require_once __DIR__ . '/RevIntegrationTest.php';
 
 class RevIntegrationVCRTest extends RevIntegrationTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
-        //It is okay not to define an api key for these tests (as long as their are cassets for them)
+        //It is okay not to define an api key for these tests (as long as there are assets for them)
     }
+
+	public function testGetOrders()
+	{
+		$this->markTestSkipped('VCR does not work for this test');
+	}
 
     public function testGetAttachment()
     {
@@ -22,6 +27,11 @@ class RevIntegrationVCRTest extends RevIntegrationTest
     {
         $this->markTestSkipped('VCR does not work for this test');
     }
+
+	public function testRequestException()
+	{
+		$this->markTestSkipped('VCR does not work for this test');
+	}
 
     protected function getClient()
     {

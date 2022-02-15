@@ -126,6 +126,10 @@ abstract class AbstractOrderSubmission {
     {
         $data = array();
 
+        if ($this->rev->getSandboxMode() === true) {
+            $data['sandbox_mode'] = true;
+        }
+
         $data['priority'] = $this->priority;
 
         if ($this->client_ref) {
