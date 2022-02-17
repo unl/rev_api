@@ -8,8 +8,8 @@ use GuzzleHttp\Psr7\Request;
 
 class Rev {
     const PRODUCTION_HOST = 'www.rev.com';
-	// Note sandbox host is not used, but kept for backwards compatibility
-	// The URI links to the api sandbox documentation
+    // Note sandbox host is not used, but kept for backwards compatibility
+    // The URI links to the api sandbox documentation
     const SANDBOX_HOST    = 'www.rev.com/api/sandbox';
 
     /**
