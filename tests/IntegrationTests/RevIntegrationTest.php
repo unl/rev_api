@@ -1,10 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace RevAPI;
 
-class RevIntegrationTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class RevIntegrationTest extends TestCase
 {
-    protected function setUp()
+	protected function setUp(): void
     {
         if (false == getenv('REV_CLIENT_API_KEY') || false == getenv('REV_USER_API_KEY')) {
             $this->markTestSkipped(
@@ -55,7 +57,7 @@ class RevIntegrationTest extends \PHPUnit_Framework_TestCase
         $input = $rev->uploadVideoUrl(getenv('TEST_VIDEO_URL'));
         
         $order = new CaptionOrderSubmission($rev);
-        
+
         $order->addInput($input);
         
         $order->setClientRef('example reference number');

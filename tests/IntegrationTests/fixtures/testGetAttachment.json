@@ -65,7 +65,7 @@
                 "1440441210"
             ]
         },
-        "body": "{\"order_number\":\"CP0360536767\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:30.23\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"v1p9FavUAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/v1p9FavUAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"CP0360536767\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:30.23\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"v1p9FavUAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/v1p9FavUAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -100,7 +100,7 @@
                 "1440441210"
             ]
         },
-        "body": "{\"order_number\":\"TC0102370152\",\"price\":1.7500,\"status\":\"Finding Transcriptionist\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":false,\"timestamps\":false,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:26.863\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"aAsaBqrUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/aAsaBqrUAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"TC0102370152\",\"price\":1.7500,\"status\":\"Finding Transcriptionist\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":false,\"timestamps\":false,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:26.863\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"aAsaBqrUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/aAsaBqrUAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -135,7 +135,7 @@
                 "1440441211"
             ]
         },
-        "body": "{\"order_number\":\"TC0258178065\",\"price\":2.6300,\"status\":\"Finding Transcriptionist\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":true,\"timestamps\":true,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:23.19\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"EXxjD6nUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/EXxjD6nUAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"TC0258178065\",\"price\":2.6300,\"status\":\"Finding Transcriptionist\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":true,\"timestamps\":true,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:23.19\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"EXxjD6nUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/EXxjD6nUAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -170,7 +170,7 @@
                 "1440441211"
             ]
         },
-        "body": "{\"order_number\":\"CP0000404666\",\"client_ref\":\"example reference number\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"TimeInsensitive\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:19.437\",\"text\":\"example comment\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"uiwGAKjUAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/uiwGAKjUAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"CP0000404666\",\"client_ref\":\"example reference number\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"TimeInsensitive\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:19.437\",\"text\":\"example comment\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"uiwGAKjUAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/uiwGAKjUAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -205,7 +205,7 @@
                 "1440441211"
             ]
         },
-        "body": "{\"order_number\":\"CP0402281980\",\"price\":0.0000,\"status\":\"Cancelled\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:51.447\"},{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:51.63\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"_FX6F37UAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/_FX6F37UAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"CP0402281980\",\"price\":0.0000,\"status\":\"Cancelled\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:51.447\"},{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:51.63\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"_FX6F37UAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/_FX6F37UAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -240,7 +240,7 @@
                 "1440441211"
             ]
         },
-        "body": "{\"order_number\":\"CP0143705765\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:43.337\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"pcaQCH3UAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/pcaQCH3UAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"CP0143705765\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:43.337\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"pcaQCH3UAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/pcaQCH3UAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -275,7 +275,7 @@
                 "1440441211"
             ]
         },
-        "body": "{\"order_number\":\"TC0205059919\",\"price\":1.7500,\"status\":\"Finding Transcriptionist\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":false,\"timestamps\":false,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:40.323\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"T_c4DHzUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/T_c4DHzUAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"TC0205059919\",\"price\":1.7500,\"status\":\"Finding Transcriptionist\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":false,\"timestamps\":false,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:40.323\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"T_c4DHzUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/T_c4DHzUAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -310,7 +310,7 @@
                 "1440441211"
             ]
         },
-        "body": "{\"order_number\":\"TC0518203384\",\"price\":2.6300,\"status\":\"Complete\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":true,\"timestamps\":true,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:37.167\"},{\"by\":\"\",\"timestamp\":\"2015-08-24T15:08:30.33\",\"text\":\"Order delivered\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"-CfjHnvUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/-CfjHnvUAQAAAAAA\/content\"}]},{\"kind\":\"transcript\",\"name\":\"sample_transcription.docx\",\"id\":\"-CfjHoHUAQAAAAAA\",\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/-CfjHoHUAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"TC0518203384\",\"price\":2.6300,\"status\":\"Complete\",\"priority\":\"Normal\",\"transcription\":{\"verbatim\":true,\"timestamps\":true,\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T15:03:37.167\"},{\"by\":\"\",\"timestamp\":\"2015-08-24T15:08:30.33\",\"text\":\"Order delivered\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"-CfjHnvUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/-CfjHnvUAQAAAAAA\/content\"}]},{\"kind\":\"transcript\",\"name\":\"sample_transcription.docx\",\"id\":\"-CfjHoHUAQAAAAAA\",\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/-CfjHoHUAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -345,7 +345,7 @@
                 "1440441212"
             ]
         },
-        "body": "{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"-CfjHnvUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/-CfjHnvUAQAAAAAA\/content\"}]}",
+        "body": "{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"-CfjHnvUAQAAAAAA\",\"audio_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/-CfjHnvUAQAAAAAA\/content\"}]}",
         "version": "1.1",
         "reason": "OK"
     },
@@ -380,7 +380,7 @@
                 "1440441212"
             ]
         },
-        "body": "{\"kind\":\"transcript\",\"name\":\"sample_transcription.docx\",\"id\":\"-CfjHoHUAQAAAAAA\",\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/-CfjHoHUAQAAAAAA\/content\"}]}",
+        "body": "{\"kind\":\"transcript\",\"name\":\"sample_transcription.docx\",\"id\":\"-CfjHoHUAQAAAAAA\",\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/-CfjHoHUAQAAAAAA\/content\"}]}",
         "version": "1.1",
         "reason": "OK"
     }

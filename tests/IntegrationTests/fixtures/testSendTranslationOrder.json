@@ -47,7 +47,7 @@
                 "-1"
             ],
             "Location": [
-                "https:\/\/api-sandbox.rev.com\/api\/v1\/orders\/TC0102370152"
+                "https:\/\/www.rev.com\/api\/v1\/orders\/TC0102370152"
             ],
             "Server": [
                 "Microsoft-IIS\/8.0"

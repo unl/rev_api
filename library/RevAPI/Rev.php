@@ -8,7 +8,14 @@ use GuzzleHttp\Psr7\Request;
 
 class Rev {
     const PRODUCTION_HOST = 'www.rev.com';
-    const SANDBOX_HOST    = 'api-sandbox.rev.com';
+    // Note sandbox host is not used, but kept for backwards compatibility
+    // The URI links to the api sandbox documentation
+    const SANDBOX_HOST    = 'www.rev.com/api/sandbox';
+
+    /**
+     * @var boolean
+     */
+    private $sandbox_mode = false;
 
     /**
      * @var string
@@ -25,20 +32,23 @@ class Rev {
      * @param string $user_api_key
      * @param string|null $host - if null, it will use the default production host
      * @param array $http_config - array of guzzle http configuration options
+     * @param array $sandbox_mode - boolean of whether to use sandbox mode
      */
-    public function __construct($client_api_key, $user_api_key, $host = null, $http_config = array())
+    public function __construct($client_api_key, $user_api_key, $host = null, $http_config = array(), $sandbox_mode = false)
     {
-        if (null == $host) {
-            $host = self::PRODUCTION_HOST;
+        // set sandbox mode by host or sandbox mode (hosts supports backwards compatibility)
+        if ($host === self::SANDBOX_HOST) {
+            $this->sandbox_mode = true;
+        } else {
+            $this->sandbox_mode = $sandbox_mode;
         }
 
-        $this->base_api_url = 'https://' . $host . '/api/v1/';
+        $this->base_api_url = 'https://' .  self::PRODUCTION_HOST . '/api/v1/';
         
         $http_config['headers']['Authorization'] = 'Rev ' . $client_api_key .':' . $user_api_key;
         $http_config['headers']['Content-Type'] = 'application/json';
         $http_config['base_uri'] = $this->base_api_url;
-        
-        
+
         $this->http_client = new HttpClient($http_config);
     }
 
@@ -56,6 +66,10 @@ class Rev {
         } catch (ClientException $e) {
             throw new Exception\RequestException($e);
         }
+    }
+
+    public function getSandboxMode() {
+        return $this->sandbox_mode;
     }
 
     /**

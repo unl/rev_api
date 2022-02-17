@@ -47,7 +47,7 @@
                 "-1"
             ],
             "Location": [
-                "https:\/\/api-sandbox.rev.com\/api\/v1\/orders\/CP0360536767"
+                "https:\/\/www.rev.com\/api\/v1\/orders\/CP0360536767"
             ],
             "Server": [
                 "Microsoft-IIS\/8.0"
@@ -100,7 +100,7 @@
                 "1440441210"
             ]
         },
-        "body": "{\"order_number\":\"CP0360536767\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:30.23\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"v1p9FavUAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/api-sandbox.rev.com\/api\/v1\/attachments\/v1p9FavUAQAAAAAA\/content\"}]}]}",
+        "body": "{\"order_number\":\"CP0360536767\",\"price\":1.7500,\"status\":\"Finding Captioner\",\"priority\":\"Normal\",\"caption\":{\"total_length\":1,\"total_length_seconds\":105},\"comments\":[{\"by\":\"University of Nebraska-Lincoln Corporate\",\"timestamp\":\"2015-08-24T18:33:30.23\"}],\"attachments\":[{\"kind\":\"media\",\"name\":\"a07d73f214fe6bacbd446e6b90be8aa9.mp4\",\"id\":\"v1p9FavUAQAAAAAA\",\"video_length_seconds\":105,\"links\":[{\"rel\":\"content\",\"href\":\"https:\/\/www.rev.com\/api\/v1\/attachments\/v1p9FavUAQAAAAAA\/content\"}]}]}",
         "version": "1.1",
         "reason": "OK"
     }
